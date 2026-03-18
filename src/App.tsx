@@ -1,25 +1,18 @@
-import { useQuery } from '@tanstack/react-query'
-import type { Project } from './types/Project';
-import { fetchProjects } from './services/ProjectService';
+import { Routes, Route } from 'react-router-dom'
+import MainLayout from './layouts/MainLayout'
+import ProjectPage from './pages/ProjectPage'
 
 function App() {
-const {data} = useQuery<Project[]>({
-  queryKey: ['projects'],
-  queryFn: fetchProjects
-})
   return (
-    <>
-      <h1>Projects</h1>
-      <ul>
-        {data?.map((project: Project) => (
-          <li key={project.name}>
-            <h2>{project.name}</h2>
-            <p>{project.description}</p>
-            <small>Created at: {new Date(project.createdAt).toLocaleDateString()}</small>
-          </li>
-        ))}
-      </ul>
-    </>
+    <Routes>
+      <Route element={<MainLayout  />}>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/dashboard" element={<div>Dashboard</div>} />
+        <Route path="/projects" element={<ProjectPage/>} />
+        <Route path="/tasks" element={<div>Tasks</div>} />
+        <Route path="/profile" element={<div>Profile</div>} />
+      </Route>
+    </Routes>
   )
 }
 
