@@ -4,14 +4,14 @@ import { fetchProjects } from "../services/ProjectService";
 import { useQuery } from "@tanstack/react-query";
 import type { Project } from "../types/Project";
 import ProjectCard from "../components/ProjectCard";
-import { Grid } from "@mantine/core";
+import { Grid, Loader } from "@mantine/core";
 
 function ProjectPage() {
-  const { data } = useQuery<Project[]>({
+  const { data,isLoading } = useQuery<Project[]>({
     queryKey: ["projects"],
     queryFn: fetchProjects,
   });
-
+  
   return (
     <div>
       <PageHeader
@@ -19,13 +19,16 @@ function ProjectPage() {
         text="Personal space for your size projects and indie builds"
         buttonProps={{ label: "New Project", onClick: () => {} }}
       />
+      {isLoading ? (
+        <Loader size="xl" color="blue" variant="dots" />
+      ) : (   
         <Grid>
           {data?.map((project) => (
             <Grid.Col span={4} key={project.id}>
               <ProjectCard project={project} />
             </Grid.Col>
           ))}
-        </Grid>
+        </Grid>)}
     </div>
   );
 }

@@ -7,7 +7,6 @@ export const TaskStatus = {
 export type TaskStatus = typeof TaskStatus[keyof typeof TaskStatus]
 
 export interface Task {
-  id: number
   title: string
   description: string
   status: TaskStatus

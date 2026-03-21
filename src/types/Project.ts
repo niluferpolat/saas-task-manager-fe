@@ -1,11 +1,14 @@
+import type { Task } from "./Task";
+
 export interface Project {
     id:number;
     name: string;
     description: string;
     progress: number;
-    projectStatus: ProjectStatus;
+    status: ProjectStatus;
     phase:string;
     dueDate: string;
+    tasks: Task[];
 }
 
 export const ProjectStatus= {

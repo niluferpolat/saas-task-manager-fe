@@ -7,3 +7,8 @@ export const fetchProjects = async (): Promise<Project[]> => {
   const response = await axios.get<Project[]>(`${API_BASE_URL}/projects`);
   return response.data;
 };
+
+export const fetchProjectById = async (id: number): Promise<Project> => {
+  const response = await axios.get<Project>(`${API_BASE_URL}/projects/${id}`);
+  return response.data;
+}
