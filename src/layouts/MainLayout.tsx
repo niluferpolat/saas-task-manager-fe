@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDisclosure } from '@mantine/hooks'
 import { AppShell, Burger, Group } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
@@ -14,7 +13,7 @@ function MainLayout() {
     navbar={{width:300,breakpoint: 'sm',collapsed:{mobile:!opened}}}
     padding='md'
     >
-   <AppShell.Header style={{zIndex:1000}}>
+   <AppShell.Header>
     <Group h="100%" px="md">
      <Burger
      hiddenFrom='sm'
@@ -22,7 +21,6 @@ function MainLayout() {
       opened={opened}
       onClick={toggle}
      />
-fsfdsfsf
     </Group>
     </AppShell.Header>    
     <AppShell.Navbar>

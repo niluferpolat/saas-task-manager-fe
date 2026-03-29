@@ -19,8 +19,23 @@ export const ProjectStatus= {
 
 export type ProjectStatus = typeof ProjectStatus[keyof typeof ProjectStatus]
 
-export const statusColor = {
-  ON_TRACK: "green",
-  PRIORITY: "orange",
-  DONE: "gray"
+export const statusLabel: Record<ProjectStatus, string> = {
+  ON_TRACK: "On Track",
+  DONE: "Completed",
+  PRIORITY: "High Priority",
+};
+
+export const projectStatusOptions = Object.values(ProjectStatus).map(
+  (status) => ({
+    value: status,
+    label: statusLabel[status],
+  })
+);
+export type ProjectModalValues = {
+  name: string;
+  description: string;
+  dueDate: Date | null;
+  phase: string;
+  progress: number;
+  status: ProjectStatus;
 };

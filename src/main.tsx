@@ -3,6 +3,7 @@ import App from './App.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createTheme, MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css';
+import './styles/mantine-dates.css';
 import { BrowserRouter } from 'react-router-dom';
 
 const queryClient = new QueryClient()
